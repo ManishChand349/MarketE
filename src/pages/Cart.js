@@ -1,9 +1,19 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import CartItem from "../components/CartItem";
 
 const Cart = () => {
   const productData = useSelector((state) => state.bazar.productData);
+  const [totalAmt, setTotalAmt] = useState("");
+
+  useEffect(() =>{
+    let price =0;
+    productData.map((item) =>{
+      price +=item.price * item.quantity;
+      return price;
+    });
+    setTotalAmt(price.toFixed(2)  );
+  },[productData]);
   return (
     <div>
       <img
@@ -18,7 +28,7 @@ const Cart = () => {
             <h2 className="text-2xl font-medium">Cart totals</h2>
             <p className="flex items-center gap-4 text-base">
               Subtotal{" "}
-              <span className="font-titleFont font-bold text-lg">$ 200 </span>
+              <span className="font-titleFont font-bold text-lg">$ {totalAmt} </span>
             </p>
             <p className="flex items-start gap-4 text-base">
               Shipping{" "}
@@ -29,7 +39,7 @@ const Cart = () => {
             </p>
           </div>
           <p className="font-titleFont font-semibold flex justify-between mt-6">
-            Total <span className="text-xl font-bold">$200</span>
+            Total <span className="text-xl font-bold">$ {totalAmt}</span>
           </p>
           <button className="text-base bg-black text-white w-full py-3 mt-6 hover:bg-gray-8000 duration-200">proceed to checkout</button>
         </div>
