@@ -12,12 +12,13 @@ import {
 } from "react-router-dom";
 import { productsData } from "./api/Api";
 import Product from "./components/Product";
+import Login from "./pages/Login";
 
 const Layout = () => {
   return (
     <div>
       <Header />
-      <ScrollRestoration/>
+      <ScrollRestoration />
       <Outlet />
       <Footer />
     </div>
@@ -36,19 +37,23 @@ const router = createBrowserRouter([
       },
       {
         path: "/product/:id",
-        element:<Product/>
+        element: <Product />,
       },
       {
-        path:"/cart",
-        element: <Cart/>,
-      }
+        path: "/cart",
+        element: <Cart />,
+      },
+      {
+        path:"/login",
+        element:<Login/>,
+      },
     ],
   },
 ]);
 function App() {
   return (
     <div className="font-bodyfont">
-     <RouterProvider router={router} />
+      <RouterProvider router={router} />
     </div>
   );
 }
