@@ -9,7 +9,7 @@ import {
 import { useDispatch } from "react-redux";
 import { ToastContainer, toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-import { addUser } from "../redux/bazarSlice";
+import { addUser, removeUser } from "../redux/bazarSlice";
 const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -30,7 +30,7 @@ const Login = () => {
         );
         setTimeout(() => {
           navigate("/");
-        }, 500);
+        }, 1000);
       })
       .catch((error) => {
         console.log(error);
@@ -42,6 +42,7 @@ const Login = () => {
       .then(() => {
         // sign out successfull.
         toast.success("Log Out successfully!");
+        dispatch(removeUser())
       })
       .catch((error) => {
         console.log(error);
