@@ -6,7 +6,13 @@ import {
   signInWithPopup,
   signOut,
 } from "firebase/auth";
+import { useDispatch } from "react-redux";
+import { ToastContainer, toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+import { addUser } from "../redux/bazarSlice";
 const Login = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const auth = getAuth();
   const provider = new GoogleAuthProvider();
   const handleGoogleLogin = (e) => {
@@ -14,7 +20,28 @@ const Login = () => {
     signInWithPopup(auth, provider)
       .then((result) => {
         const user = result.user;
-        console.log(user);
+        dispatch(
+          addUser({
+            _id: user.uid,
+            name: user.displayName,
+            email: user.email,
+            Image: user.photoURL,
+          })
+        );
+        setTimeout(() => {
+          navigate("/");
+        }, 500);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const handleSingOut = () => {
+    signOut(auth)
+      .then(() => {
+        // sign out successfull.
+        toast.success("Log Out successfully!");
       })
       .catch((error) => {
         console.log(error);
@@ -30,7 +57,10 @@ const Login = () => {
           <img className="w-8" src={googleLogo} alt="googleLogo" />
           <span className="text-sm text-gray-900">Sign in with Google</span>
         </div>
-        <button className="bg-black text-white text-base py-3 px-8 tracking-wide rounded-md hover:bg-gray-800 duration-300">
+        <button
+          onClick={handleSingOut}
+          className="bg-black text-white text-base py-3 px-8 tracking-wide rounded-md hover:bg-gray-800 duration-300"
+        >
           Sign Out
         </button>
       </div>
@@ -43,6 +73,18 @@ const Login = () => {
           Sign Out
         </button>
       </div>
+      <ToastContainer
+        position="top-left"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
     </div>
   );
 };
