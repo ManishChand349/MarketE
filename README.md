@@ -1,5 +1,5 @@
 # This is E-commerce websites 
-<p>This site build in React JS, Tailwind css, Redux toolkit </p>
+<p>This site build in React JS, Tailwind css, Redux toolkit ,Firebase and payment options </p>
  
 <h2><a href="https://pokedex-pokemon-smoky.vercel.app/" target="_blank"> VISIT Web Site</a></h2>
 <h3>Home Page</h3>
