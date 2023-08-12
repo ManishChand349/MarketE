@@ -16,4 +16,4 @@
 <img src="https://github.com/ManishChand349/MarketE/assets/99408291/90c5801c-45ee-4761-90ed-3a8eb818fdd7"/>
 <h3>Payment options and Pay</h3>
 <img src="https://github.com/ManishChand349/MarketE/assets/99408291/b69e282b-25ef-469a-a87c-fec2f7cdbafd"/>
-<h3>are You </h3>
+
