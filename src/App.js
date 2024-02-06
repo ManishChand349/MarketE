@@ -52,7 +52,7 @@ const router = createBrowserRouter([
 ]);
 function App() {
   return (
-    <div className="font-bodyfont">
+    <div className=" max-w-[80%] mx-auto font-bodyfont">
       <RouterProvider router={router} />
     </div>
   );
