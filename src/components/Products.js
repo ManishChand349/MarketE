@@ -13,7 +13,7 @@ const Products = ({products}) => {
                lorem ipsum dolor sit amet consectetur, adipisicing elit. Explicabo, quos fugit inventore, cumque quae corpoirs ratin tenetur eos valu neque magnam soluta aperiam omis persicities reiciendis asperiores repudiandeae ssmunda quidem.
           </p>
       </div>
-      <div className='max-w-screen-xl mx-auto py-10 grid grid-cols-4 gap-10'>
+      <div className='max-w-screen-xl mx-auto py-10 grid md:grid-cols-2 lg:grid-cols-4 gap-10'>
       {products.map((item)=>(
         <ProdcutsCard key={item._id} product={item}/>
       ))}
